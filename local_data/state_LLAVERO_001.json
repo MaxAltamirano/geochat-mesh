@@ -1,0 +1,9 @@
+{
+  "node_id": "LLAVERO_001",
+  "status": "ACTIVE",
+  "blockchain_handshake": false,
+  "metadata": {
+    "version": "1.0.0"
+  },
+  "alerts": null
+}
