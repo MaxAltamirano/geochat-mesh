@@ -188,8 +188,14 @@ func main() {
 
 	// 6. Lanzamiento del Hub (Servicio de red)
 	http.HandleFunc("/ws", handleWebSocket)
-	fmt.Println("GeoChat Mesh Hub operando en puerto 8081...")
+	// CAPTURA DE PUERTO DINÁMICO
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8081" // Puerto por defecto para desarrollo local
+	}
 
-	// El servidor se queda bloqueado aquí escuchando
-	log.Fatal(http.ListenAndServe(":8081", nil))
+	fmt.Printf("GeoChat Mesh Hub operando en puerto %s...\n", port)
+
+	// Lanzar servidor escuchando en todas las interfaces (0.0.0.0)
+	log.Fatal(http.ListenAndServe("0.0.0.0:"+port, nil))
 }

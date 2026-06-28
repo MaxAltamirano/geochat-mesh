@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: geochat-mesh-service
+    env: go
+    buildCommand: go build -o bin/mesh main.go
+    startCommand: ./bin/mesh
+    envVars:
+      - key: PORT
+        value: 8081
+      - key: NODE_ID
+        value: LLAVERO_001
+    disk:
+      name: mesh-data
+      mountPath: /app/local_data
+      sizeGB: 1
